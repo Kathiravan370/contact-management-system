@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <h1>Contact Management</h1>
+                <p>Manage your contacts easily and securely</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <span>Total Contacts</span>
+                    <h2 id="totalContacts">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📱</div>
+                <div>
+                    <span>Phone Contacts</span>
+                    <h2 id="phoneContacts">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✉️</div>
+                <div>
+                    <span>Email Contacts</span>
+                    <h2 id="emailContacts">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Add Contact Card -->
+        <section class="card">
+
+            <div class="card-header">
+                <div>
+                    <h2 id="formTitle">Add New Contact</h2>
+                    <p>Enter the contact details below</p>
+                </div>
+            </div>
+
+            <form id="contactForm">
+
+                <div class="form-grid">
+
+                    <!-- Contact ID -->
+                    <div class="form-group">
+                        <label for="contactId">Contact ID</label>
+
+                        <input
+                            type="text"
+                            id="contactId"
+                            placeholder="Example: C001"
+                            required
+                        >
+
+                        <small>Enter a unique contact ID</small>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter full name"
+                            required
+                        >
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter 10-digit phone number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            required
+                        >
+
+                        <small id="phoneHelp">
+                            Must contain exactly 10 digits
+                        </small>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="example@gmail.com"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span>＋</span> Add Contact
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="cancelBtn"
+                        style="display: none;"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+                <div id="message"></div>
+
+            </form>
+
+        </section>
+
+        <!-- Contacts Table -->
+        <section class="card">
+
+            <div class="card-header table-header">
+
+                <div>
+                    <h2>All Contacts</h2>
+                    <p>View and manage your saved contacts</p>
+                </div>
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadContacts()"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Contact ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="contactsTableBody">
+
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                No contacts found
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Contact Management System • Node.js • Express.js • MongoDB</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
